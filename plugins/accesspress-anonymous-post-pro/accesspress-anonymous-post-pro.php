@@ -1519,18 +1519,24 @@ if ( !class_exists('AP_Pro_Class') ) {
 
         function print_checkbox($terms, $exclude_terms = array(), $hierarchical = 1, $form = '', $field_title = '') {
             // $this->print_array($terms);
-
             foreach ( $terms as $term ) {
                 if ( !in_array($term->slug, $exclude_terms) ) {
-                    $space = $this->check_parent($term);
+										$display_name = $term->name . '&nbsp;&nbsp;';
+										$margin = '3px';
+										if ($term->parent == 0) {
+											$display_name = "<strong>" . $display_name . "</strong>";
+											if ($form != '') {
+												$space = '&nbsp;';
+											}
+										}
+
                     $option_value = ($hierarchical == 0) ? $term->name : $term->term_id;
-                    $form .= '<label class="ap-checkbox-label">' . $space . '<input type="checkbox" name="' . $field_title . '[]"  value="' . $option_value . '"/>' . $term->name . '</label>';
+                    $form .= $space . '<input type="checkbox" name="' . $field_title . '[]" style="margin:' . $margin . ';"  value="' . $option_value . '"/>' . $display_name ;
                 }
                 ?>
 
                 <?php
                 if ( !empty($term->children) ) {
-
                     $form .= $this->print_checkbox($term->children, $exclude_terms, $hierarchical, '', $field_title);
                 }
             }

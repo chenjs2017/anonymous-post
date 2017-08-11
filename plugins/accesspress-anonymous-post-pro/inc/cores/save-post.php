@@ -193,6 +193,9 @@ if ( $error_flag == 0 ) {
 
                     if ( $value != '' ) {
                         add_post_meta($post_id, $meta_key, $value, false);
+												if ($meta_key == '_product_url') {
+													wp_set_object_terms( $post_id, 'external', 'product_type' );
+												}
                     }
                 }
             }
@@ -214,6 +217,7 @@ if ( $error_flag == 0 ) {
                     }
                 }
             }
+
 
             $this->send_admin_notification($post_id, $ap_form_post_title, $form_id);
 

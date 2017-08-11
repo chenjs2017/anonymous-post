@@ -268,6 +268,7 @@ foreach ( $ap_settings[ 'form_fields' ] as $field_title => $field_array ) {
                     $form .= '<div class="ap-checkbox-wrap ' . $required . '" data-required-msg="' . $required_message . '">';
                     $option_count = 0;
                     if ( count($categoryHierarchy) > 0 ) {
+												
                         $form .= $this->print_checkbox($categoryHierarchy, $terms_exclude, $field_array[ 'hierarchical' ], '', $field_title);
                         /*
                           foreach ( $terms as $term ) {

@@ -394,12 +394,15 @@ function validateEmail($email) {
 
                             var preview_html = '<div class="ap-pro-prev-holder"><span class="ap-prev-name">' + fileName + '</span><img src="' + responseJSON.url + '" /><span class="ap-pro-preview-remove"  data-url="' + responseJSON.url + '" data-id="' + element_id + '" data-attachment-id="' + responseJSON.attachment_id + '" data-attachment-code="' + responseJSON.attachment_code + '">x</span></div>';
                         } else {
-
                             var preview_html = '<div class="ap-pro-prev-holder"><span class="ap-prev-name">' + fileName + '</span><span class="ap-pro-preview-remove"  data-url="' + responseJSON.url + '" data-id="' + element_id + '" data-attachment-id="' + responseJSON.attachment_id + '" data-attachment-code="' + responseJSON.attachment_code + '">x</span></div>';
                         }
                         if (multiple_upload)
                         {
-                            var url = responseJSON.url;
+                          	var url = responseJSON.url;
+														if ($('[name=_product_image_gallery]').val() != 'undefined') {				
+															url = responseJSON.attachment_id;
+														}
+
                             var previous_url = $('#ap-pro-file-url-' + element_id).val();
                             if (previous_url == '')
                             {
@@ -481,6 +484,7 @@ function validateEmail($email) {
                     },
                     onComplete: function (id, fileName, responseJSON) {
 
+												alert(id);
                         //console.log(responseJSON);
                         if (responseJSON.success)
                         {
