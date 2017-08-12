@@ -1522,22 +1522,20 @@ if ( !class_exists('AP_Pro_Class') ) {
             foreach ( $terms as $term ) {
                 if ( !in_array($term->slug, $exclude_terms) ) {
 										$display_name = $term->name . '&nbsp;&nbsp;';
-										$margin = '3px';
+										$margin = '5px';
 										if ($term->parent == 0) {
 											$display_name = "<strong>" . $display_name . "</strong>";
-											if ($form != '') {
-												$space = '&nbsp;';
-											}
 										}
 
                     $option_value = ($hierarchical == 0) ? $term->name : $term->term_id;
-                    $form .= $space . '<input type="checkbox" name="' . $field_title . '[]" style="margin:' . $margin . ';"  value="' . $option_value . '"/>' . $display_name ;
+                    $form .= '<input type="checkbox" name="' . $field_title . '[]" style="margin:' . $margin . ';"  value="' . $option_value . '"/>' . $display_name ;
                 }
                 ?>
 
                 <?php
                 if ( !empty($term->children) ) {
                     $form .= $this->print_checkbox($term->children, $exclude_terms, $hierarchical, '', $field_title);
+										$form .= '<br/>';
                 }
             }
 
