@@ -178,7 +178,7 @@ foreach ( $ap_settings[ 'form_fields' ] as $field_title => $field_array ) {
                         $required = ($field_array[ 'required' ] == '1') ? ' ap-required-field' : '';
                         $required_message = ($field_array[ 'required_message' ] == '') ? __('This field is required.', 'anonymous-post-pro') : $field_array[ 'required_message' ];
                         $form .= '</div><div class="ap-pro-form-field">
-                   <textarea name="ap_form_post_excerpt" data-required-msg="' . $field_array[ 'required_message' ] . '" class="ap-pro-textarea' . $required . '"></textarea>
+                   <textarea rows="5" name="ap_form_post_excerpt" data-required-msg="' . $field_array[ 'required_message' ] . '" class="ap-pro-textarea' . $required . '"></textarea>
                    <input type="hidden" name="form_included_fields[]" value="post_excerpt"/>';
                         if ( $field_array[ 'notes_type' ] == 'tooltip' && $field_array[ 'notes' ] != '' ) {
                             $form .= '<span class="ap-pro-tooltip-notes">' . $field_array[ 'notes' ] . '</span>';
